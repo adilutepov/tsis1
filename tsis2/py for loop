@@ -1,0 +1,90 @@
+Example 1
+Print each fruit in a fruit list:
+
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+
+Example 2
+Loop through the letters in the word "banana":
+
+for x in "banana":
+  print(x)
+
+Example 3
+Exit the loop when x is "banana":
+
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+  if x == "banana":
+    break
+
+Example 4
+Exit the loop when x is "banana", but this time the break comes before the print:
+
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    break
+  print(x) 
+
+Example 5
+Do not print banana:
+
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  if x == "banana":
+    continue
+  print(x)
+
+Example 6
+Using the range() function:
+
+for x in range(6):
+  print(x)
+
+Example 7
+Using the start parameter:
+
+for x in range(2, 6):
+  print(x)
+
+Example 8
+Increment the sequence with 3 (default is 1):
+
+for x in range(2, 30, 3):
+  print(x)
+
+Example 9
+Print all numbers from 0 to 5, and print a message when the loop has ended:
+
+for x in range(6):
+  print(x)
+else:
+  print("Finally finished!")
+
+Example 10
+Break the loop when x is 3, and see what happens with the else block:
+
+for x in range(6):
+  if x == 3: break
+  print(x)
+else:
+  print("Finally finished!")
+
+Example 11
+Print each adjective for every fruit:
+
+adj = ["red", "big", "tasty"]
+fruits = ["apple", "banana", "cherry"]
+
+for x in adj:
+  for y in fruits:
+    print(x, y)
+ 
+Example 12
+for x in [0, 1, 2]:
+  pass
+
+
