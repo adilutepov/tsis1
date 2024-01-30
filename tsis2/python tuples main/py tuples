@@ -1,0 +1,50 @@
+Example 1
+Create a Tuple:
+thistuple = ("apple", "banana", "cherry")
+print(thistuple)
+
+Example 2
+Tuples allow duplicate values:
+
+thistuple = ("apple", "banana", "cherry", "apple", "cherry")
+print(thistuple)
+
+Example 3
+Print the number of items in the tuple:
+
+thistuple = ("apple", "banana", "cherry")
+print(len(thistuple))
+
+Example 4
+One item tuple, remember the comma:
+
+thistuple = ("apple",)
+print(type(thistuple))
+
+#NOT a tuple
+thistuple = ("apple")
+print(type(thistuple))
+
+Example 5
+String, int and boolean data types:
+
+tuple1 = ("apple", "banana", "cherry")
+tuple2 = (1, 5, 7, 9, 3)
+tuple3 = (True, False, False)
+
+Example 6
+A tuple with strings, integers and boolean values:
+
+tuple1 = ("abc", 34, True, 40, "male")
+
+Example 7
+What is the data type of a tuple?
+
+mytuple = ("apple", "banana", "cherry")
+print(type(mytuple))
+
+Example 8
+Using the tuple() method to make a tuple:
+
+thistuple = tuple(("apple", "banana", "cherry")) # note the double round-brackets
+print(thistuple)
