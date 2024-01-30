@@ -1,0 +1,47 @@
+Example 1
+Remove "banana":
+
+thislist = ["apple", "banana", "cherry"]
+thislist.remove("banana")
+print(thislist)
+
+Example 2
+Remove the first occurance of "banana":
+
+thislist = ["apple", "banana", "cherry", "banana", "kiwi"]
+thislist.remove("banana")
+print(thislist)
+
+Example 3
+Remove the second item:
+
+thislist = ["apple", "banana", "cherry"]
+thislist.pop(1)
+print(thislist)
+
+Example 4
+Remove the last item:
+
+thislist = ["apple", "banana", "cherry"]
+thislist.pop()
+print(thislist)
+
+Example 5
+Remove the first item:
+
+thislist = ["apple", "banana", "cherry"]
+del thislist[0]
+print(thislist)
+
+Example 6
+Delete the entire list:
+
+thislist = ["apple", "banana", "cherry"]
+del thislist
+
+Example 7
+Clear the list content:
+
+thislist = ["apple", "banana", "cherry"]
+thislist.clear()
+print(thislist)
