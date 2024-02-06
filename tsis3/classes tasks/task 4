@@ -1,0 +1,29 @@
+import math
+class Point():
+    def __init__(self, x = int(input()), y = int(input()), mx = int(input()), my = int(input()), secpointx = int(input()), secpointy = int(input())):
+        self.x = x
+        self.y = y
+        self.mx=mx
+        self.my=my
+        self.secpointx=secpointx
+        self.secpointy=secpointy
+
+    def show(self):
+        print("position")
+        print(self.x,self.y)
+    def move(self):
+        self.x += self.mx
+        self.y += self.my
+        print("new position")
+        print(self.x,self.y)
+    def dist(self):
+        a = self.x - self.secpointx
+        b = self.y - self.secpointy
+        c = math.sqrt(a ** 2 + b ** 2)
+        print("distance beetwen points")
+        print(c)
+
+p = Point()
+p.show()
+p.move()
+p.dist()
