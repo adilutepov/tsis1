@@ -1,0 +1,40 @@
+variation 1
+class shape():
+    def __init__(self,length):
+        self.length = length
+    
+    def area(self):
+        areaos = 0;
+        areaos = areaos + self.length*self.length
+        print(areaos)
+class square(shape):
+    def __init__(self,length):
+        super().__init__(length)
+            
+    def area(self):
+        areaos = 0;
+        areaos = areaos + self.length*self.length
+        
+s=int(input("give length of shape:"))
+p = shape(s)
+p.area()
+
+variation 2
+class shape():
+    def __init__(self,length):
+        self.length = length
+    
+    def area(self):
+        areaos = 0;
+        areaos = areaos + self.length*self.length
+        print(areaos)
+class square(shape):
+    def __init__(self,length):
+        super().__init__(length)
+            
+    def area2(self):
+        print(self.length * self.length)
+        
+s=int(input("give length of shape:"))
+p = square(s)
+p.area2()
