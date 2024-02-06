@@ -1,0 +1,12 @@
+class task_1():
+
+    def getString(self):
+        self.string= input()
+    def printstring(self):
+        self.string=self.string.upper()
+        print(self.string)
+
+str = task_1()
+
+str.getString()
+str.printstring()
