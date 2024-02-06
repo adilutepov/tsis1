@@ -1,1 +1,16 @@
+class shape():
+    pass
+class rectangle(shape):
+    def __init__(self,length,width):
+        self.length=length
+        self.width=width
+            
+    def area(self):
+        print(self.length * self.width)
+        
 
+
+l=int(input("give length of shape:"))
+w=int(input("give width of shape:"))
+t2=rectangle(l,w)
+t2.area()
