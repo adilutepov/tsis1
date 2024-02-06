@@ -1,0 +1,20 @@
+class shape():
+
+    def area(self):
+        areaos = 0;
+        side = int(input())
+        areaos = areaos +side*side
+        print(areaos)
+class square(shape):
+    def __init__(self,length):
+        self.length=length
+            
+    def area2(self):
+        print(self.length * self.length)
+        
+
+t1=shape()
+t1.area()
+s=int(input("give length of shape:"))
+t2=square(s)
+t2.area2()
