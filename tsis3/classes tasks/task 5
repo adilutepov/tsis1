@@ -1,0 +1,19 @@
+class Accaunt():
+    def __init__(self,owner = input(),balance = int(input())):
+        self.owner =owner
+        self.balance =balance
+        
+    def deposite(self,plus =int(input())):
+        self.balance += plus
+        return self.balance
+    def withdrawal(self,minus = int(input())):
+        if (self.balance - minus) < 0:
+            return False
+        else:
+            self.balance -= minus
+            return self.balance
+acc1 = Accaunt()
+dep = acc1.deposite()
+print(dep)
+wit = acc1.withdrawal()
+print(wit)
