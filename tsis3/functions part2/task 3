@@ -1,0 +1,10 @@
+from dict_of_movies import movies
+
+def all_from_category(cat):
+    a=[]
+    for movie in movies:
+        if movie['category'] == cat:
+            a.append(movie['name'])
+    return a        
+b=input()
+print(all_from_category(b))
