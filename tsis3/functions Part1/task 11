@@ -1,0 +1,9 @@
+def polyndrome(word):
+    for i in range (int(len(word)/2)):
+        if word[i] != word[len(word)-i-1]:
+            return False
+    return True
+
+a= input("give me word or phrase")
+b="".join(a.split())
+print(polyndrome(b))
