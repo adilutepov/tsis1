@@ -1,0 +1,13 @@
+from dict_of_movies import movies
+
+def average_imdb(cat):
+    films=0
+    total=0
+    for movie in movies:
+            if movie['category'] == cat:
+                total=total +movie['imdb']
+                films+=1
+    return total/films        
+
+b=input()
+print(average_imdb(b))
