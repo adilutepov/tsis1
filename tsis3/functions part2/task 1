@@ -1,0 +1,10 @@
+from dict_of_movies import movies
+
+def check_rating(a):
+    for movie in movies:
+        if a == movie['name'] and movie['imdb'] > 5.5:
+            return True
+    return False
+
+b= input()
+print(check_rating(b))
