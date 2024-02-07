@@ -1,0 +1,10 @@
+def histograme(list):
+    sign="*"
+    for i in list:
+        print(int(i)*sign)
+    
+
+
+a= input("elements of list")
+b= a.split()
+print(histograme(b))
