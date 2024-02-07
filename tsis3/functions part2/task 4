@@ -1,0 +1,16 @@
+from dict_of_movies import movies
+
+def average_imdb(list):
+    d=len(list)
+    total=0
+    for movie in movies:
+        for i in list:
+            if movie['name'] == i:
+                total=total +movie['imdb']
+    return total/d        
+a=int(input())
+c=[]
+for i in range(a):
+    b=input()
+    c.append(b)
+print(average_imdb(c))
