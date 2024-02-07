@@ -1,0 +1,7 @@
+def calc(a):
+    c= 28.3495231
+    return a* c
+    
+    
+b=int(input("grams:"))
+print("ownces:",calc(b))
