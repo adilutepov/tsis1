@@ -1,0 +1,12 @@
+
+all_heads = 35
+all_legs = 94
+rabbits = 0
+chickens = 0
+for rabbits in range(all_heads + 1):
+    chickens = all_heads - rabbits
+    if (4 * rabbits) + (2 * chickens) == all_legs:
+        break 
+
+print("rabbits", rabbits)
+print("chickens", chickens)
