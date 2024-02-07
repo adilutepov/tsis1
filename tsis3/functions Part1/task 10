@@ -1,0 +1,10 @@
+def unique(list):
+    ulist = []
+    for item in list:
+        if item not in ulist:
+            ulist.append(item)
+    return ulist
+
+list = input("Введите элементы списка через пробел: ").split()
+ulist = unique(list)
+print(ulist)
