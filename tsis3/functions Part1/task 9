@@ -1,0 +1,9 @@
+def volume_of_sphere(num):
+    p=3.14
+    volume = (4/3)*p*num**3
+    return volume
+    
+
+
+rad=int(input("give me radius:"))
+print(volume_of_sphere(rad))
