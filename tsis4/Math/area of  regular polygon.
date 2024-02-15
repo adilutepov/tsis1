@@ -1,0 +1,9 @@
+import math
+a=int(input("sides"))
+b=int(input("Length of side:"))
+perimeter=a*b
+converte = math.radians(180/a)
+angle = math.tan(converte)*2
+traingle = b/angle
+Area = perimeter*traingle/2
+print("The area of the polygon is:",Area)
