@@ -1,0 +1,4 @@
+a=int(input("height of parallelogram::"))
+b=int(input("Length of Base::"))
+d=a*b
+print("Expected Output: ",d)
