@@ -1,0 +1,8 @@
+def work(a):
+    for i in range(a,0,-1):
+        yield i
+         
+a=int(input("number1:"))
+print("all numbers between number1 and 0")
+for i in work(a):
+    print (i)
