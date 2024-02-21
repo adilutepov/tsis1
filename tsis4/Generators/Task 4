@@ -1,0 +1,10 @@
+def work(a,b):
+    for i in range(a,b+1):
+        yield i**2
+         
+a=int(input("number1:"))
+b=int(input("number2:"))
+
+print("all squares between two numbers")
+for i in work(a,b):
+    print (i)
