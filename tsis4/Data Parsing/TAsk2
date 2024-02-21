@@ -1,0 +1,9 @@
+import datetime
+
+segodna = datetime.datetime.now()
+vchera = segodna - datetime.timedelta(days=1)
+zavtro = segodna + datetime.timedelta(days=1)
+
+print("вчера было:",vchera.strftime("%A"))
+print("сегодня :",segodna.strftime("%A"))
+print("завтро будет:",zavtro.strftime("%A"))
