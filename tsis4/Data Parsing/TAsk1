@@ -1,1 +1,8 @@
+import datetime
 
+x = datetime.datetime.now()
+new_x = x - datetime.timedelta(days=5)
+
+
+print("Today:",x.strftime("%A"))
+print("Five day before:",new_x.strftime("%A"))
