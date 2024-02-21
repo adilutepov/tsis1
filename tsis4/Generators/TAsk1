@@ -1,1 +1,6 @@
 
+x= int(input("give some number:"))
+
+b=(i**2 for i in range (1,x+1))
+for c in b:
+    print(c)
