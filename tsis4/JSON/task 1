@@ -1,1 +1,10 @@
+from sampledata import value
+import json
+data = json.loads(value)
+print("inteface Status")
+print("================================================================================")
+print("DN                                  x.                Description           Speed    MTU  ")
+print("-------------------------------------------------- --------------------    ------   ------")
 
+for something in data['imdata']:
+    print(something["l1PhysIf"]['attributes']['dn'],something["l1PhysIf"]['attributes']['descr'],"                              ",something["l1PhysIf"]['attributes']['speed']," ",something["l1PhysIf"]['attributes']['mtu'])
