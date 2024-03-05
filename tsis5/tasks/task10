@@ -1,0 +1,7 @@
+import re
+mytext = open('row.txt','r')
+truetext= mytext.read()
+test = re.findall(r'[A-Z][a-z]+',truetext)
+result = "_".join(test)
+print(test)
+print(result)
