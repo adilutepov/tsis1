@@ -1,1 +1,5 @@
-
+import re
+mytext = open('row.txt','r')
+truetext= mytext.read()
+test = re.findall(r'ab*',truetext)
+print(test)
