@@ -1,0 +1,5 @@
+import re
+mytext = open('row.txt','r')
+truetext= mytext.read()
+test = re.sub(r'[ ,.]',':',truetext)
+print(test)
