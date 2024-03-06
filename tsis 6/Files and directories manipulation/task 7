@@ -1,0 +1,11 @@
+def ctrlc(orig, copy):
+    origfile = open(orig, 'r')
+    newfile = open(copy, 'w')
+    for line in origfile:
+        newfile.write(line)
+
+
+ctrlc('row.txt', 'A.txt')
+
+reading = open('row.txt','r')
+print(*reading)
