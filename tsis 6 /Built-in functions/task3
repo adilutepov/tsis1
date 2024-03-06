@@ -1,0 +1,8 @@
+
+import time
+import math
+number = int(input("we find square of ; "))
+timer = int(input("give me some time ; "))
+time.sleep(timer/1000) 
+square_root = math.sqrt(number)
+print(f"Square root of {number} after {timer} milliseconds is {square_root}")
