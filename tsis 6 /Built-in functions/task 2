@@ -1,0 +1,9 @@
+word =input()
+UPcount =0 
+Lowcount =0
+for letter in word:
+    if letter.isupper():
+        UPcount = UPcount +1
+    elif letter.lower():
+        Lowcount = Lowcount+1
+print(UPcount ,Lowcount)
