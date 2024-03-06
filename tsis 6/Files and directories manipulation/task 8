@@ -1,0 +1,7 @@
+import os
+test =os.access('row.txt',os.F_OK)
+if test:
+    print("file exist and we will delete them")
+    os.remove('row.txt')
+else:
+    print("file dont exist")
