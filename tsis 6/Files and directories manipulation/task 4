@@ -1,0 +1,5 @@
+textt = open('row.txt','r')
+count =0
+for so in textt:
+    count = count +1
+print(count)
