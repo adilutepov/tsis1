@@ -1,0 +1,12 @@
+import os
+def myfunctio(put):
+    check = os.access(put, os.F_OK)
+    direct = os.listdir(put)
+    if check:
+        print("file is exist and name of fileis",put ,"\n they directories")
+        for slot in direct:
+            print(slot)
+    else:
+        print("file dont exist")
+
+myfunctio("some path")
