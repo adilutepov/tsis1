@@ -1,0 +1,3 @@
+import os
+for dirictory in os.listdir(Path):
+    print(dirictory)
