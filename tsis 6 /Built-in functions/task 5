@@ -1,0 +1,7 @@
+def checkt(tupl):
+    return all(tupl)
+tuple1 = (True,True,True,True)
+tuple2 = (True,True,False,True)
+
+print(checkt(tuple2))
+print(checkt(tuple1))
