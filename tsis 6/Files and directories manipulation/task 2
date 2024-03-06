@@ -1,0 +1,9 @@
+import os
+check1 = os.access('row.txt', os.F_OK)
+check2 = os.access('row.txt', os.R_OK)
+check3 = os.access('row.txt', os.X_OK)
+check4 = os.access('row.txt', os.W_OK)
+print("check to file exist",check1)
+print("check to file can be readed",check2)
+print("check to file can be write",check3)
+print("check to file executable",check4)
