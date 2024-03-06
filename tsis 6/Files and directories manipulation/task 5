@@ -1,0 +1,10 @@
+textt = open('row.txt','w')
+num = int(input("some number:"))
+for i in range (num):
+    word = input("element of list in file")
+    textt.write(word)
+    textt.write(" ")
+textt.close()
+
+for_read =open('row.txt','r')
+print(*for_read)
