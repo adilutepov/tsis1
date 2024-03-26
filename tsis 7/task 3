@@ -1,0 +1,27 @@
+import pygame
+pygame.init()
+screen = pygame.display.set_mode((1200,900))
+pygame.display.set_caption("Moving Ball")
+pos_x = 600
+pos_y =450
+while True:
+    screen.fill((255,255,255))
+    pygame.draw.circle(screen,(255,0,0),[pos_x,pos_y],50)
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            quit()
+        elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_w:
+                    if pos_y > 50:
+                        pos_y -= 20
+                elif event.key == pygame.K_s:
+                    if pos_y <850:
+                        pos_y += 20
+                elif event.key == pygame.K_a:
+                    if pos_x >50:
+                        pos_x -= 20
+                elif event.key == pygame.K_d:
+                    if pos_x <1150:
+                        pos_x += 20
+       
