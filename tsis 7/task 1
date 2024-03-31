@@ -1,1 +1,35 @@
+import pygame
+from datetime import datetime
+
+pygame.init()
+screen = pygame.display.set_mode((1400, 1050))
+window_title = pygame.display.set_caption("tsis7 clocks")
+clock = pygame.time.Clock()
+
+background = pygame.image.load("mainclock.png")
+sechand = pygame.image.load("leftarm.png")
+minhand = pygame.image.load("rightarm.png")
+bg_rect = background.get_rect(center=(400, 400))
+
+while True:
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            quit()
+    now_time = datetime.now().time()
+
+    seconds_angle = -(now_time.second * 6)
+    minutes_angle = -((now_time.minute + 8) * 6)
+
+    rsechand = pygame.transform.rotate(sechand, seconds_angle)
+    rminhand = pygame.transform.rotate(minhand, minutes_angle)
+
+    sechand_rect = rsechand.get_rect(center=bg_rect.center)
+    minhand_rect = rminhand.get_rect(center=bg_rect.center)
+
+    screen.blit(background, bg_rect)
+    screen.blit(rsechand, sechand_rect)
+    screen.blit(rminhand, minhand_rect)
+
+
 
