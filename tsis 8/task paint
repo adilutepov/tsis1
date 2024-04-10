@@ -1,0 +1,77 @@
+import pygame
+pygame.init()
+screen = pygame.display.set_mode((900,600))
+block = 40
+place = 10
+#sb = shape_button
+sb = (200,200,200)
+red = (255,0,0)
+green =(0,255,0)
+blue = (43,57,112)
+white=(255,255,255)
+black = (0,0,0)
+color = sb
+erase = pygame.image.load('Eraser_36315.png')
+shape ="not choosen"
+def console():
+    pygame.draw.rect(screen,(160,160,160),[0, 0,850 ,75 ])
+    pygame.draw.rect(screen,sb,[850, 0 ,100 ,850])
+    pygame.draw.rect(screen,sb,[10, 10 ,block ,block])
+    pygame.draw.rect(screen,black,[20, 20 ,20 ,20])
+    pygame.draw.rect(screen,sb,[60, 10 ,block ,block])
+    pygame.draw.circle(screen,black,[80,30],15)
+    pygame.draw.rect(screen,sb,[110, 10 ,block ,block])
+    screen.blit(erase,[117,15])
+    pygame.draw.rect(screen,black,[855, 85 ,block ,block])
+    pygame.draw.rect(screen,red,[855, 135 ,block ,block])
+    pygame.draw.rect(screen,green,[855, 185 ,block ,block])
+    pygame.draw.rect(screen,blue,[855, 235 ,block ,block])
+    pygame.draw.rect(screen,white,[855, 285 ,block ,block])
+def check_sh(pos):
+    if pos[0] >10 and pos[0]<60 and pos[1] > 10 and pos[1]<50:
+        return "square"
+    elif pos[0] >60 and pos[0]<110 and pos[1] > 10 and pos[1]<50:
+        return "circle"
+    elif pos[0] >110 and pos[0]<160 and pos[1] > 10 and pos[1]<50:
+        return "erase"
+    else:
+        return "not choosen"
+    
+def check_color(pos):
+    if pos[0] >855 and pos[0]<895 and pos[1] > 60 and pos[1]<110:
+        return black
+    elif pos[0] >855 and pos[0]<895 and pos[1] > 110 and pos[1]<170:
+        return red
+    elif pos[0] >855 and pos[0]<895 and pos[1] > 160 and pos[1]<220:
+        return green
+    elif pos[0] >855 and pos[0]<895 and pos[1] > 210 and pos[1]<270:
+        return blue
+    elif pos[0] >855 and pos[0]<895 and pos[1] > 260 and pos[1]<320:
+        return white
+def painting(color,shape,pos):
+    if shape == "circle":
+        pygame.draw.circle(screen,color,pos,15)
+    elif shape == "square":
+        pygame.draw.rect(screen,color,[pos[0],pos[1],15,15])
+    elif shape == "erase":
+        pygame.draw.circle(screen,(0,0,0),pos,15)
+    elif shape == "not choosen":
+        pass
+
+while True:
+    console()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            quit()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1:  # Левая кнопка мыши
+                pos = pygame.mouse.get_pos()
+                if pos[0]<850 and pos[1]<75:
+                    shape = check_sh(pos)
+                elif pos[0]>850 and pos[1]>75:
+                    color = check_color(pos)
+                elif pos[0]< 850 and pos[1]>75:
+                    painting(color,shape,pos)
+
+                
+    pygame.display.update()
