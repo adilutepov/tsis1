@@ -1,0 +1,186 @@
+#импорт
+import pygame
+import sys
+import random
+import time
+from pygame.locals import *
+
+# Инициализация Pygame
+pygame.init()
+
+# Настройка FPS
+FPS = 60
+FramePerSec = pygame.time.Clock()
+limit = 3
+# Создание цветов
+BLUE = (0, 0, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+
+# Переменные для игры
+SCREEN_WIDTH = 400
+SCREEN_HEIGHT = 600
+SPEED = 5
+SCORE = 0
+MSCORE = 0
+
+# Настройка шрифтов
+font = pygame.font.SysFont("Verdana", 60)
+font_small = pygame.font.SysFont("Verdana", 20)
+game_over = font.render("Game Over", True, BLACK)
+
+# Загрузка фонового изображения
+background = pygame.image.load("AnimatedStreet.png")
+
+# Создание экрана
+DISPLAYSURF = pygame.display.set_mode((400, 600))
+DISPLAYSURF.fill(WHITE)
+pygame.display.set_caption("Game")
+
+# Класс врага
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("Enemy.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = (random.randint(40, SCREEN_WIDTH-40), 0)  
+
+    def move(self):
+        global SCORE
+        self.rect.move_ip(0, SPEED)
+        if self.rect.top > 600:
+            SCORE += 1
+            self.rect.top = 0
+            self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+
+# Класс монеты
+class mon(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("coin.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = (random.randint(40, SCREEN_WIDTH-40), 0)  
+
+    def move(self):
+        global MSCORE
+        self.rect.move_ip(0, SPEED)
+        if self.rect.top > 600:
+            self.rect.top = 0
+            self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+class mon2(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("coin2.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = (random.randint(40, SCREEN_WIDTH-40), 0)  
+
+    def move(self):
+        global MSCORE
+        self.rect.move_ip(0, SPEED)
+        if self.rect.top > 600:
+            self.rect.top = 0
+            self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)  
+class mon3(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("coin3.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = (random.randint(40, SCREEN_WIDTH-40), 0)  
+
+    def move(self):
+        global MSCORE
+        self.rect.move_ip(0, SPEED)
+        if self.rect.top > 600:
+            self.rect.top = 0
+            self.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)         
+
+# Класс игрока
+class Player(pygame.sprite.Sprite):
+    def __init__(self):
+        super().__init__() 
+        self.image = pygame.image.load("Player.png")
+        self.rect = self.image.get_rect()
+        self.rect.center = (160, 520)
+        
+    def move(self):
+        pressed_keys = pygame.key.get_pressed()
+        if self.rect.left > 0:
+            if pressed_keys[K_LEFT]:
+                self.rect.move_ip(-5, 0)
+        if self.rect.right < SCREEN_WIDTH:        
+            if pressed_keys[K_RIGHT]:
+                self.rect.move_ip(5, 0)
+
+# Создание спрайтов        
+P1 = Player()
+E1 = Enemy()
+C1 = mon()
+C2= mon2()
+C3 =mon3()
+# Создание групп спрайтов
+enemies = pygame.sprite.Group()
+enemies.add(E1)
+all_sprites = pygame.sprite.Group()
+all_sprites.add(P1)
+all_sprites.add(E1)
+all_sprites.add(C1)
+all_sprites.add(C2)
+all_sprites.add(C3)
+coins = pygame.sprite.Group()
+coins2 = pygame.sprite.Group()
+coins3 = pygame.sprite.Group()
+coins.add(C1)
+coins2.add(C2)
+coins3.add(C3)
+# Добавление нового пользовательского события
+INC_SPEED = pygame.USEREVENT + 1
+pygame.time.set_timer(INC_SPEED, 1000)
+
+# Игровой цикл
+while True:
+    for event in pygame.event.get():   
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+#вывод экрана и счета играка и количество собранных монет
+    DISPLAYSURF.blit(background, (0, 0))
+    scores = font_small.render("Score: " + str(SCORE), True, BLACK)
+    cscore = font_small.render("Coins: " + str(MSCORE), True, BLACK)
+    DISPLAYSURF.blit(scores, (10, 10))
+    DISPLAYSURF.blit(cscore, (10, 30))
+#вывод всех спрайтов на экран
+    for entity in all_sprites:
+        DISPLAYSURF.blit(entity.image, entity.rect)
+        entity.move()
+#сбор монет
+    if pygame.sprite.spritecollideany(P1, coins):
+        MSCORE += 1
+        C1.rect.top = 0
+        C1.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+    if pygame.sprite.spritecollideany(P1, coins2):
+        MSCORE += 2
+        C2.rect.top = 0
+        C2.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+    if pygame.sprite.spritecollideany(P1, coins3):
+        MSCORE += 3
+        C3.rect.top = 0
+        C3.rect.center = (random.randint(40, SCREEN_WIDTH - 40), 0)
+
+    if MSCORE > limit:
+        SPEED += 0.5
+        limit +=2
+#реакция на соприкосновения врага с играком
+    if pygame.sprite.spritecollideany(P1, enemies):
+        DISPLAYSURF.fill(RED)
+        DISPLAYSURF.blit(game_over, (30, 250))
+        pygame.display.update()
+        for entity in all_sprites:
+            entity.kill() 
+        time.sleep(2)
+        pygame.quit()
+        sys.exit()
+#обновление дисплея
+    pygame.display.update()
+    FramePerSec.tick(FPS)
