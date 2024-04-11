@@ -21,7 +21,7 @@ snake_speed = 10
 velocity =10
 font_style = pygame.font.SysFont("bahnschrift", 35)
 score_font = pygame.font.SysFont("bahnschrift", 45)
- 
+pygame.time.set_timer(pygame.USEREVENT,7000)
 def Your_score(score):
     value = score_font.render("Score: " + str(score), True, yellow)
     dis.blit(value, [0, 0])
@@ -61,7 +61,7 @@ def gameLoop(level,velocity):
         while game_close == True:
             dis.fill(blue)
             message("You Lost!", (204,204,0))
-            Your_score(Length_of_snake - 1)
+            Your_score(truescore)
             pygame.display.update()
             time.sleep(3)
             game_over = True
@@ -69,6 +69,10 @@ def gameLoop(level,velocity):
 
  
         for event in pygame.event.get():
+            if event.type == pygame.USEREVENT:
+                foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0
+                foody = round(random.randrange(0, dis_height - snake_block) / 10.0) * 10.0
+                 
             if event.type == pygame.QUIT:
                 game_over = True
             if event.type == pygame.KEYDOWN:
@@ -163,3 +167,6 @@ def gameLoop(level,velocity):
  
     pygame.quit()
     quit()
+ 
+ 
+gameLoop(level,velocity)
