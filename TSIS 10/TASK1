@@ -1,0 +1,33 @@
+import psycopg2
+import csv
+conn= psycopg2.connect(
+    host="localhost",
+    user="postgres",
+    password="123",
+    database="postgres"
+)
+cursor = conn.cursor()
+cursor.execute(
+    """ CREATE TABLE if not exists LABA(
+        ID serial primary key,
+        number varchar(20) ,
+        Name Varchar(30) not null
+    );"""
+    )
+
+cursor.execute(
+    """ DELETE FROM LABA WHERE ID > 5 
+    ;"""
+    )
+# (cursor.execute(""" insert into LABA (number,name) vaLUES
+#             ('+18561615641615','usa'),
+#             ('+4785616532165','UK')
+# """))
+cursor.execute(
+    """ UPDATE LABA SET Name = 'MAHMUT' WHERE ID <3 """
+    )
+cursor.execute("""SELECT * FROM LABA WHERE STARTS_WITH(NUMBER,'+1')""")
+print(cursor.fetchall())
+conn.commit()
+cursor.close()
+conn.close()
