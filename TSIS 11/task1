@@ -1,0 +1,118 @@
+import psycopg2
+import csv
+
+# count = int(input("how many new contact: "))
+
+
+# newname = input("name of contact: ")
+# newnum = input("phone number: ")
+deletename = input("which contact delete: ")
+deletenum =  input("which number delete: ")
+
+def deletecontact(deletename,deletenum):
+    conn = psycopg2.connect(
+        host="localhost",
+        user="postgres",
+        password="123",
+        database="postgres" )
+    cursor = conn.cursor()
+    cursor.execute("""delete from laba where name = %s or number = %s""",(deletename,deletenum))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def  many_contacts(count):
+    for i in range( count):
+        newname = input("name of contact: ")
+        newnum = input("phone number: ")
+        new_element(newname,newnum)
+
+def full_table():
+    conn = psycopg2.connect(
+        host="localhost",
+        user="postgres",
+        password="123",
+        database="postgres" )
+    cursor = conn.cursor()
+    cursor.execute("""SELECT * FROM LABA""")
+    print(cursor.fetchall())
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def new_element(newname,newnum):
+    conn = psycopg2.connect(
+        host="localhost",
+        user="postgres",
+        password="123",
+        database="postgres" )
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO LABA (name, number) VALUES (%s, %s)", (newname, newnum))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+def limit_and_offset():
+    Limit = 2
+    offset = 2
+    conn = psycopg2.connect(
+        host="localhost",
+        user="postgres",
+        password="123",
+        database="postgres" )
+    cursor = conn.cursor()
+    cursor.execute("""SELECT * FROM LABA limit %s offset %s""",(Limit,offset))
+    print(cursor.fetchall())
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+
+
+def check_name(newname):
+    copy = False
+    conn = psycopg2.connect(
+        host="localhost",
+        user="postgres",
+        password="123",
+        database="postgres"
+    )
+    cursor = conn.cursor()
+    cursor.execute("SELECT name FROM laba")
+    for nick in cursor.fetchall():
+        if nick[0] == newname:
+            copy = True
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return copy
+
+conn = psycopg2.connect(
+    host="localhost",
+    user="postgres",
+    password="123",
+    database="postgres" )
+cursor = conn.cursor()
+cursor.execute(
+    """ DELETE FROM LABA WHERE ID > 5 
+    ;"""
+    )
+# cursor.execute(
+#     """ UPDATE LABA SET Name = 'MAHMUT' WHERE ID <3 """
+#     )
+# cursor.execute("""SELECT * FROM LABA WHERE STARTS_WITH(NUMBER,'+1')""")
+# print(cursor.fetchall())
+
+conn.commit()
+cursor.close()
+conn.close()
+
+deletecontact(deletename,deletenum)
+full_table()
+# limit_and_offset()
+# many_contacts(count)
+# result = check_name(newname)
+# if result == True:
+#     print("we cant write the duplicates")
+# else:
+#     new_element(newname,newnum)
